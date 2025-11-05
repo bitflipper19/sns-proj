@@ -1,3 +1,5 @@
+clear all, close all, clc;
+
 function y=Square(t, f, A)
 
     if nargin<3
