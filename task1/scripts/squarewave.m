@@ -1,7 +1,6 @@
-close all clc;
+clc; clear; close all;
 
 function y=Square(t, f, A)
-
     if nargin<3
         A=1;
     end
@@ -13,26 +12,22 @@ function y=Square(t, f, A)
     y = zeros(size(t));    
 
     for i = 1:length(t)
-        
         phase = mod(t(i), T);
-
-     
         if phase < T/2
             y(i) = A;
         else
             y(i) = -A;
         end
     end
-    
 end
 
 f=20;
 t=linspace(-0.20, 0.20, 1e6);
 A=1;
 
-x=Square(t, f, A);
-stairs(t, x);
-xlabel('Time(s)');
-ylabel('x(t)');
-title('Square Wave - f=20Hz, Amp.=+-1');
+x = Square(t, f, A);
+stairs(t, x, 'r');
 grid on;
+xlim([0 0.15]);
+ylim([-1.5 1.5]);
+hold on;

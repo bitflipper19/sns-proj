@@ -10,15 +10,16 @@ t=linspace(0, 0.15, 1e6);
 A=1;         
 
 x = Square(t, f, A);
-stairs(t, x, 'r');
+stairs(t, x, 'b');
 grid on;
 xlim([0 0.15]);
-ylim([-2 2]);
+ylim([-1.5 1.5]);
 hold on;
 
 N = [1, 3, 5, 15, 50];
 
-for n = N
+% for n = N
+n = N(4);
     y = zeros(size(t));
     for i = 1:n
         k = 2*i - 1;
@@ -26,7 +27,7 @@ for n = N
     end
     y = (4*A/pi) * y;
     plot(t, y, 'DisplayName', sprintf('N = %d', n));
-end
+% end
 
 legend('Square Wave', 'N=1', 'N=3', 'N=5', 'N=15', 'N=50');
 xlabel('Time (s)');
