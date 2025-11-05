@@ -10,7 +10,7 @@ t=linspace(0, 0.15, 1e6);
 A=1;         
 
 x = Square(t, f, A);
-stairs(t, x, 'b');
+stairs(t, x, 'r');
 grid on;
 xlim([0 0.15]);
 ylim([-1.5 1.5]);
@@ -19,20 +19,21 @@ hold on;
 N = [1, 3, 5, 15, 50];
 
 % for n = N
-n = N(4);
+n = N(5);
     y = zeros(size(t));
     for i = 1:n
         k = 2*i - 1;
         y = y + (1/k) * sin(2*pi*k*f*t);
     end
     y = (4*A/pi) * y;
-    plot(t, y, 'DisplayName', sprintf('N = %d', n));
+    plot(t, y, 'c', 'DisplayName', sprintf('N = %d', n));
 % end
 
-legend('Square Wave', 'N=1', 'N=3', 'N=5', 'N=15', 'N=50');
+% legend('Square Wave', 'N=1', 'N=3', 'N=5', 'N=15', 'N=50');
+legend('Square Wave', 'N=1');
 xlabel('Time (s)');
 ylabel('Amplitude');
-title('Fourier Series Approximation of Square Wave');
+title('Overlap of square wave and N=50 harmonics');
 hold off;
 
 function y = Square(t, f, A)
